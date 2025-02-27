@@ -16,7 +16,7 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(exception = Exception.class)
     public ResponseEntity<ExceptionResponseDTO> ExceptionHandler (Exception e) {
-        return new ResponseEntity<>(new ExceptionResponseDTO("Exception!", e.getClass() , e.getMessage(), Instant.now()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ExceptionResponseDTO("Exception!", e.getClass() , e.getMessage(), Instant.now()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(exception = MethodArgumentNotValidException.class)
