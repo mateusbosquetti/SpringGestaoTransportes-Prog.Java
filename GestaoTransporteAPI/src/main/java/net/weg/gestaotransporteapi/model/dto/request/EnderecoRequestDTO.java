@@ -2,6 +2,7 @@ package net.weg.gestaotransporteapi.model.dto.request;
 
 import jakarta.validation.constraints.*;
 import net.weg.gestaotransporteapi.model.entity.Endereco;
+import org.hibernate.validator.constraints.Length;
 
 public record EnderecoRequestDTO(
         @NotBlank String rua,
@@ -9,7 +10,7 @@ public record EnderecoRequestDTO(
         @NotBlank String cidade,
         @NotBlank String estado,
         @NotBlank String bairro,
-        @NotBlank @Min(8) @Max(8) String cep
+        @NotBlank @Length(max = 8, min = 8) String cep
 ) {
     public Endereco toEntity() {
         return Endereco.builder()
