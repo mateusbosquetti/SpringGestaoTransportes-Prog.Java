@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.weg.gestaotransporteapi.model.dto.response.VeiculoResponseDTO;
 
 @Builder
 @Entity
@@ -29,4 +30,13 @@ public class Veiculo {
     @JoinColumn(nullable = false)
     private Motorista motorista;
 
+    public VeiculoResponseDTO toDTO() {
+        return new VeiculoResponseDTO(
+                this.id,
+                this.marca,
+                this.modelo,
+                this.placa,
+                this.motorista.toDTO()
+        );
+    }
 }

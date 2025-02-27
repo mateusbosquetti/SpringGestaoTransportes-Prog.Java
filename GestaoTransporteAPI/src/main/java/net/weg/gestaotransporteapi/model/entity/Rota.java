@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.weg.gestaotransporteapi.model.dto.response.RotaResponseDTO;
 
 @Builder
 @Entity
@@ -30,4 +31,14 @@ public class Rota {
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(nullable = false)
     private Motorista motorista;
+
+    public RotaResponseDTO toDTO() {
+        return new RotaResponseDTO(
+                this.id,
+                this.origem.toDTO(),
+                this.destino.toDTO(),
+                this.distancia,
+                this.motorista.toDTO()
+        );
+    }
 }

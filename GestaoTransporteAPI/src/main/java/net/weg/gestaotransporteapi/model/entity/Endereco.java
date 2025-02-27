@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.weg.gestaotransporteapi.model.dto.response.EnderecoResponseDTO;
 
 @Builder
 @Entity
@@ -32,4 +33,15 @@ public class Endereco {
     private String cep;
 
 
+    public EnderecoResponseDTO toDTO() {
+        return new EnderecoResponseDTO(
+                this.id,
+                this.rua,
+                this.numero,
+                this.cidade,
+                this.estado,
+                this.bairro,
+                this.cep
+        );
+    }
 }

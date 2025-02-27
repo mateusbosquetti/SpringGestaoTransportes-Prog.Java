@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.weg.gestaotransporteapi.model.dto.response.MotoristaResponseDTO;
 
 import java.util.List;
 
@@ -39,4 +40,13 @@ public class Motorista {
     private List<Rota> rotas;
 
 
+    public MotoristaResponseDTO toDTO() {
+        return new MotoristaResponseDTO(
+                this.id,
+                this.nome,
+                this.email,
+                this.telefone,
+                this.endereco.toDTO()
+        );
+    }
 }

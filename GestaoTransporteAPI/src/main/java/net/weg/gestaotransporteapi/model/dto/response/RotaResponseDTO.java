@@ -6,8 +6,8 @@ import net.weg.gestaotransporteapi.model.entity.Motorista;
 
 public record RotaResponseDTO(
         Long id,
-        Endereco origem,
-        Endereco destino,
+        EnderecoResponseDTO origem,
+        EnderecoResponseDTO destino,
         Double distancia,
         MotoristaResponseDTO motorista
 ) {
