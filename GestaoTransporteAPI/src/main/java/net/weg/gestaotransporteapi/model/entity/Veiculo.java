@@ -26,7 +26,7 @@ public class Veiculo {
     @Column(nullable = false)
     private String placa;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(nullable = false)
     private Motorista motorista;
 

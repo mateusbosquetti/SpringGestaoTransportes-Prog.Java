@@ -1,8 +1,10 @@
 package net.weg.gestaotransporteapi.controller;
 
+import jakarta.xml.bind.ValidationException;
 import net.weg.gestaotransporteapi.model.dto.response.ExceptionResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -12,13 +14,18 @@ import java.util.NoSuchElementException;
 public class ExceptionHandlerController {
 
     @ExceptionHandler(exception = Exception.class)
-    public ResponseEntity<ExceptionResponseDTO> exceptionHandler(Exception e) {
-        return new ResponseEntity<>(new ExceptionResponseDTO("Erro encontrado!", e.getMessage()), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ExceptionResponseDTO> ExceptionHandler (Exception e) {
+        return new ResponseEntity<>(new ExceptionResponseDTO("Exception!", e.getClass() , e.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(exception = MethodArgumentNotValidException.class)
+    public ResponseEntity<ExceptionResponseDTO> MethodArgumentNotValidExceptionHandler (MethodArgumentNotValidException e) {
+        return new ResponseEntity<>(new ExceptionResponseDTO("Falha na Validação!", e.getClass() , e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(exception = NoSuchElementException.class)
-    public ResponseEntity<ExceptionResponseDTO> exceptionHandler(NoSuchElementException e) {
-        return new ResponseEntity<>(new ExceptionResponseDTO("Não Encotrado!", e.getMessage()), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ExceptionResponseDTO> NoSuchElementExceptionHandler (NoSuchElementException e) {
+        return new ResponseEntity<>(new ExceptionResponseDTO("Elemento não Encotrado!", e.getClass(), e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
 }

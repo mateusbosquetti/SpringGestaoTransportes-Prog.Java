@@ -19,16 +19,16 @@ public class Rota {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     private Endereco origem;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     private Endereco destino;
 
     @Column(nullable = false)
     private Double distancia;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(nullable = false)
     private Motorista motorista;
 
