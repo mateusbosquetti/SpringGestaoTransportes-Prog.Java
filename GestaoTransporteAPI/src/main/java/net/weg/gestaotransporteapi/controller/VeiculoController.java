@@ -38,7 +38,7 @@ public class VeiculoController {
         return new ResponseEntity<>(service.buscarVeiculo(id), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping
     public ResponseEntity<Page<VeiculoResponseDTO>> getVeiculo(Pageable pageable) {
         return new ResponseEntity<>(service.listarVeiculo(pageable), HttpStatus.OK);
     }

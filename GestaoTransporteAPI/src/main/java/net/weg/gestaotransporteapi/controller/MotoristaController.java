@@ -38,7 +38,7 @@ public class MotoristaController {
         return new ResponseEntity<>(service.buscarMotorista(id), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping
     public ResponseEntity<Page<MotoristaResponseDTO>> getMotorista(Pageable pageable) {
         return new ResponseEntity<>(service.listarMotorista(pageable), HttpStatus.OK);
     }}

@@ -38,7 +38,7 @@ public class RotaController {
         return new ResponseEntity<>(service.buscarRota(id), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping
     public ResponseEntity<Page<RotaResponseDTO>> getRota(Pageable pageable) {
         return new ResponseEntity<>(service.listarRota(pageable), HttpStatus.OK);
     }

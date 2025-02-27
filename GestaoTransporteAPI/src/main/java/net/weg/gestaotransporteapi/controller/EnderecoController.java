@@ -38,7 +38,7 @@ public class EnderecoController {
         return new ResponseEntity<>(service.buscarEndereco(id), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping
     public ResponseEntity<Page<EnderecoResponseDTO>> getEndereco(Pageable pageable) {
         return new ResponseEntity<>(service.listarEndereco(pageable), HttpStatus.OK);
     }
